@@ -1,0 +1,25 @@
+{
+  "name": "freemarker.js",
+  "version": "1.3.0",
+  "description": "Make freemarker available for node.js with FMPP.",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@coding.net:ijse/freemarker.js.git"
+  },
+  "keywords": [
+    "freemarker",
+    "fmpp",
+    "node.js"
+  ],
+  "bin": {
+    "fmpp": "./fmpp/fmpp"
+  },
+  "author": "ijse",
+  "license": "MIT",
+  "dependencies": {
+    "node-uuid": "^1.4.3"
+  }
+}
