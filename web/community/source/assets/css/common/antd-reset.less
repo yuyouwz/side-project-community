@@ -1,0 +1,73 @@
+// reset ant components styles
+.ant-tooltip-inner {
+  max-height: 300px;
+  overflow: auto;
+  word-break: break-all;
+}
+
+//checkbox
+.ant-checkbox {
+  .ant-checkbox-inner,
+  &.ant-checkbox-checked:after {
+    border-radius: 50%;
+  }
+  &.ant-checkbox-disabled {
+    .ant-checkbox-inner {
+      background-color: #e5e5e5;
+      border-width: 0;
+      &::after {
+        top: 2px;
+        left: 5px;
+      }
+    }
+  }
+}
+
+//pagination
+.ant-pagination-total-text {
+  color: #999;
+}
+
+//form
+.ant-form-title {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.ant-form-item-label {
+  height: 32px;
+  label {
+    font-size: 14px;
+    font-weight: normal;
+    &::after {
+      content: '';
+    }
+  }
+}
+
+//table
+.ant-table-wrapper {
+  .ant-table {
+    border: 1px solid #e8eaed;
+    box-shadow: 0 2px 4px 0 #e1e4f0;
+    border-radius: 4px;
+  }
+  .ant-table-body {
+    border-top: 1px solid #d4d6d9;
+    overflow-y: auto !important;//stylelint-disable-line
+  }
+  .ant-table-thead {
+    font-size: 14px;
+    .ant-table-column-sorter {
+      padding-left: 4px;
+      margin-left: 0;
+      width: 20px;
+    }
+  }
+}
+
+.ant-table-fixed-left {
+  .ant-table-body-outer {
+    border-top: 1px solid #d4d6d9;
+  }
+}

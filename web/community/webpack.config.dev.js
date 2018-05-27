@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
+import autoprefixer from 'autoprefixer';
 import { travelDir, getEntries, getEntireName } from './tools/helps';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 const GLOBALS = {
@@ -53,6 +54,15 @@ export default {
     filename: '[name].js'
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          autoprefixer(),
+        ],
+        debug: true,
+        noInfo: true // set to false to see a list of every file being bundled.
+      }
+    }),
     new webpack.DefinePlugin(GLOBALS),
     new webpack.HotModuleReplacementPlugin(), // Tells React to build in prod mode. https://facebook.github.io/react/downloads.htmlnew webpack.HotModuleReplacementPlugin());
   ].concat(getHtmlWebpackPlugin()),
@@ -78,6 +88,20 @@ export default {
         }, {
           loader: 'less-loader?',
 
+        }]
+      },
+      {
+        test: /\.css$/,
+        include: [
+          path.resolve(__dirname, './source/assets/css/lib'),
+          path.join(__dirname, 'node_modules/antd')
+        ],
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader?'
+        }, {
+          loader: 'postcss-loader?'
         }]
       },
       {
