@@ -11,7 +11,7 @@ const viewsPath = '/views/';
 const dataPath = '/ftl-mocks/';
 const mockPath = [];
 travelDir('.' + viewsPath, mockPath);
-let newEntries = getEntries(['./source/entries/**/*.js']);
+let newEntries = getEntries(['./source/entries/**/*.js'],['webpack-hot-middleware/client?reload=true']);
 
 let argvFilter = process.argv.slice(-1);
 if (argvFilter && argvFilter[0]) {
@@ -65,6 +65,7 @@ export default {
     }),
     new webpack.DefinePlugin(GLOBALS),
     new webpack.HotModuleReplacementPlugin(), // Tells React to build in prod mode. https://facebook.github.io/react/downloads.htmlnew webpack.HotModuleReplacementPlugin());
+    new webpack.NoEmitOnErrorsPlugin(),
   ].concat(getHtmlWebpackPlugin()),
   module: {
     rules: [
@@ -75,6 +76,42 @@ export default {
         ],
         use: [{
           loader: 'babel-loader'
+        }]
+      },
+      {
+        test: /\.eot(\?v=\d+.\d+.\d+)?$/,
+        use: [{
+          loader: 'file-loader'
+        }]
+      },
+      {
+        test: /\.(woff|woff2)$/,
+        use: [{
+          loader: 'url-loader?limit=100000'
+        }]
+      },
+      {
+        test: /\.ttf(\?v=\d+.\d+.\d+)?$/,
+        use: [{
+          loader: 'file-loader?limit=10000&mimetype=application/octet-stream'
+        }]
+      },
+      {
+        test: /\.svg(\?v=\d+.\d+.\d+)?$/,
+        use: [{
+          loader: 'file-loader?limit=10000&mimetype=image/svg+xml'
+        }]
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/i,
+        use: [{
+          loader: 'file-loader'
+        }]
+      },
+      {
+        test: /\.ico$/,
+        use: [{
+          loader: 'file-loader?name=[name].[ext]'
         }]
       },
       {
