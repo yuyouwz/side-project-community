@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Login from './Login';
-import * as actions from './actions';
+import * as actions from '../../actions/actions';
 import { bindActionCreators } from 'redux';
 
 

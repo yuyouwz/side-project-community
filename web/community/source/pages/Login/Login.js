@@ -8,6 +8,14 @@ class Login extends Component {
 	constructor(props) {
 		super(props)
 	}
+	handleSubmit = (e) => {
+		e.preventDefault();
+		this.props.form.validateFields((err, values) => {
+			if (!err) {
+				console.log('Received values of form: ', values);
+			}
+		});
+	}
 	render() {
 		const { getFieldDecorator } = this.props.form;
 		return (
@@ -18,7 +26,7 @@ class Login extends Component {
 						<span className="name">yuyou社区</span>
 						<Form onSubmit={this.handleSubmit} className="login-form">
 							<FormItem>
-								{getFieldDecorator('userName', {
+								{getFieldDecorator('username', {
 									rules: [{ required: true, message: 'Please input your username!' }],
 								})(
 									<Input prefix={<Icon type="user" autoComplete="off" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
@@ -44,6 +52,25 @@ class Login extends Component {
 		)
 	}
 }
-const WrappedNormalLoginForm = Form.create()(Login);
+const WrappedNormalLoginForm = Form.create(
+	{
+		onFieldsChange(props, changedFields) {
+			props.upDateLoginForm(changedFields)
+		},
+		mapPropsToFields(props) {
+			
+			const { fields } = props.login
+			
+			return {
+				username: Form.createFormField({
+					...fields.username
+				}),
+				password: Form.createFormField({
+					...fields.password
+				}),
+			}
+		}
+	}
+)(Login);
 
 export default WrappedNormalLoginForm;
