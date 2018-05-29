@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import axios from 'axios';
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 const FormItem = Form.Item;
 import '../../assets/css/common/index.less';
 import './Login.less';
@@ -12,7 +13,11 @@ class Login extends Component {
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
-				console.log('Received values of form: ', values);
+				axios.get('http://localhost:3000/?name=1').then((res)=>{
+					console.log(res)
+					message.success('登录成功');
+				})
+				
 			}
 		});
 	}
@@ -58,9 +63,7 @@ const WrappedNormalLoginForm = Form.create(
 			props.upDateLoginForm(changedFields)
 		},
 		mapPropsToFields(props) {
-			
 			const { fields } = props.login
-			
 			return {
 				username: Form.createFormField({
 					...fields.username

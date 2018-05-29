@@ -12,7 +12,6 @@ export const login = (state=initialState.login,action)=> {
                 ...state.fields,
                 ...action.fields
             }
-            
         })
         default:
         return state;
