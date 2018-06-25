@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 const FormItem = Form.Item;
 import request from '../../utils/ajax';
@@ -12,21 +11,19 @@ class Login extends Component {
 	}
 	handleSubmit = (e) => {
 		e.preventDefault();
-		
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
 				request({
-					url:'http://localhost:8888/',
+					url: 'http://localhost:8888/',
 					method: 'post',
-					data:{
-						user:values.username,
-						password:values.password
+					data: {
+						user: values.username,
+						password: values.password
 					}
-				}).then((res)=>{
-					console.log(res)
+				}).then((res) => {
 					message.success('登录成功');
 				})
-				
+
 			}
 		});
 	}
