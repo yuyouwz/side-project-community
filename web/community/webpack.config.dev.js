@@ -11,7 +11,7 @@ const viewsPath = '/views/';
 const dataPath = '/ftl-mocks/';
 const mockPath = [];
 travelDir('.' + viewsPath, mockPath);
-let newEntries = getEntries(['./source/entries/**/*.js'],['webpack-hot-middleware/client?reload=true']);
+let newEntries = getEntries(['./source/entries/**/*.js'], ['webpack-hot-middleware/client?reload=true']);
 
 let argvFilter = process.argv.slice(-1);
 if (argvFilter && argvFilter[0]) {
@@ -124,6 +124,7 @@ export default {
           loader: 'postcss-loader?'
         }, {
           loader: 'less-loader?',
+          options: { javascriptEnabled: true }
 
         }]
       },

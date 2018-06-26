@@ -5,4 +5,4 @@ const doorReducer = (state = DEFAULT_STATE, action) => {
 			return state;
 	}
 }
-export default doorReducer;
+export default { doorReducer };
