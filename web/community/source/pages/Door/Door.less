@@ -1,7 +1,28 @@
-#components-layout-demo-fixed .logo {
-    width: 120px;
-    height: 31px;
-    background: rgba(255,255,255,.2);  
-    margin: 16px 24px 16px 0;
-    float: left;
-  }
+.g-door {
+    .g-door-header {
+			width: 100%;
+			position: fixed;
+			z-index: 999;
+			background-color: #fff;
+			border-bottom: 1px solid #f1f1f1;
+			.g-door-nav {
+				line-height: 62px;
+			}
+			.ant-menu-horizontal {
+				border-bottom: 0px solid #fff;
+			}
+		}
+		.g-door-content {
+			padding-top: 84px;
+			.g-door-center {
+				min-height: 960px;
+				background-color: #fff;
+			}
+			.g-door-sider {
+				min-height: 960px;
+			}
+		}
+		.g-door-footer {
+			text-align: center;
+		}
+}
